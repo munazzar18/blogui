@@ -1,28 +1,44 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
+import useLocalStorage from '../hooks/useLocalStorage';
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
-import useLocalStorage from "../hooks/useLocalStorage";
-
-const fakeAuth = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve('2342f2f1d131rf12'), 250);
-    });
-  }
+const host = 'http://localhost:3500';
 
 const AuthProvider = ({ children }) => {
-  const [token, setToken] = useLocalStorage("token", null);
+  const [token, setToken] = useLocalStorage('token', null);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    const token = await fakeAuth();
+  const handleLogin = async (email, password) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    };
 
-    setToken(token);
-    navigate("/");
+    try {
+      const response = await fetch(`${host}/api/auth/login`, requestOptions);
+      if (!response.ok) {
+        throw new Error('Authentication failed.');
+      }
+
+      const data = await response.json();
+      const authToken = data.authToken;
+      setToken(authToken);
+      navigate('/');
+    } catch (error) {
+      console.log('Login failed:', error.message);
+    }
   };
 
   const handleLogout = () => {
-    setToken(null);
+    localStorage.removeItem('auth-token');
+      setToken(null)
+      navigate('/login');
+
   };
 
   const value = {
@@ -31,11 +47,7 @@ const AuthProvider = ({ children }) => {
     onLogout: handleLogout,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-export default AuthProvider
+export default AuthProvider;
