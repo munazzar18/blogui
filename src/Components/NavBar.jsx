@@ -2,9 +2,8 @@ import React from 'react'
 import AuthContext from '../context/AuthContext';
 import { useContext } from 'react';
 
-
 const NavBar = () => {
-
+    const { token } = useContext(AuthContext);
     const { onLogout } = useContext(AuthContext);
      
   return (
@@ -16,9 +15,9 @@ const NavBar = () => {
           </a>
         </div>
         <div className="navbar-end">
-          <button className="btn" onClick={onLogout}>
-            Log Out
-          </button>
+          {token?<button className="btn" onClick={onLogout}>Log Out</button>:
+          <button className="btn" onClick={onLogout}></button>
+          }
         </div>
       </div>
     </>

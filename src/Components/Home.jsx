@@ -1,10 +1,12 @@
-import React from 'react'
-import useAuth from '../hooks/useAuth';
+import Blogs from './Blogs'
 
-function Home() {
-    const { token } = useAuth();
+
+function Home(props) {
+    const {showAlert} = props
     return (
-        <div>This is Home. Authenticated as {token}</div>
+      <>
+        <Blogs showAlert={showAlert}/>
+      </>
     )
 }
 

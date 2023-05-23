@@ -7,11 +7,12 @@ const ProtectedRoute = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("token", token)
         if (!token) {
+            
             navigate('/login')
-        }      
-    }, [token])
+        }     
+        //eslint-disable-next-line 
+    }, [token]) 
     
 
     return children;
