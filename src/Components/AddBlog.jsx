@@ -14,7 +14,7 @@ const AddBlog = (props) => {
   // eslint-disable-next-line
   useEffect(() => {
     getCategory(); // Fetch categories when the component mounts
-  }, [getCategory]);  // eslint-disable-next-line
+  }, []);  // eslint-disable-next-line
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ const AddBlog = (props) => {
         >
     <option disabled value="">Pick a category</option>
     {categories.map((category) => (
-      <option key={category._id} value={category.content}>{category.content}</option>
+      <option key={category._id} value={category._id}>{category.content}</option>
     ))}
   </select>
 </div>

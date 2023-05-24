@@ -101,7 +101,7 @@ router.delete('/deleteblog/:id', fetchUser, async(req, res) => {
 })
 
 //Route 5 : Fetch one blog by id 
-router.get('/blog:id', fetchUser, async(req, res) => {
+router.get('/:id', fetchUser, async(req, res) => {
     try {
         const blog = await Blogs.findById(req.params.id)
         if(!blog){

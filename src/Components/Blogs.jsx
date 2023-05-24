@@ -34,14 +34,13 @@ const Blogs = (props) => {
     setBlog({
       id: currentBlog._id,
       etitle: currentBlog.title,
-      edescription: currentBlog.description,
-      ecategory: currentBlog.categories
+      edescription: currentBlog.description
     });
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-    editBlog(blog.id, blog.etitle, blog.edescription, blog.etag);
+    editBlog(blog.id, blog.etitle, blog.edescription);
     refClose.current.click();
     props.showAlert('Updated Successfully', 'success');
   };
@@ -49,13 +48,6 @@ const Blogs = (props) => {
   const onChange = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   };
-
-
-  const category = () => 
-  {
-    categories.find((category) => category._id === blog.category)?.content
-  }
-
 
   return (
     <>
@@ -125,12 +117,13 @@ const Blogs = (props) => {
                 <label
                   className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
                 >
-                  {category}
+                  {blog.category[0].content}
+                  {/* {category(blog)} */}
                 </label>
               </div>
               <div className="group relative">
                 <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                  <a href={blog}>
+                  <a href={"/MyBlogs/" + blog._id}>
                     <span className="absolute inset-0" />
                     {blog.title}
                   </a>

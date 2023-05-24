@@ -23,12 +23,13 @@ import AuthContext from '../context/AuthContext';
     };
   
     // Add a Blog
-    const addBlog = async (title, description) => {
+    const addBlog = async (title, description, categoryId) => {
       // API CALL
       const response = await fetch(`${host}/api/blogs/addblog`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'categoryId' : categoryId,
           'auth-token': token,
         },
         body: JSON.stringify({ title, description }),
