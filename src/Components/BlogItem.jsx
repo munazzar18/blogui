@@ -14,7 +14,7 @@ const BlogItem = (props) => {
             <div className="card-actions justify-end">
                 <h5 className="card-title">{blog.title}</h5>
                 <p className="card-text"> {blog.description} </p>
-                <button className="btn btn-outline btn-error" onClick={()=>updateBlog(blog) }>Update Bloggggg</button>
+                <button className="btn btn-outline btn-error" onClick={()=>{updateBlog(blog); props.showAlert("Updated Successfully", "success");}}>Update Blog</button>
                 <button className="btn btn-outline btn-error" onClick={()=>{deleteBlog(blog._id); props.showAlert("Deleted Successfully" , "success");}}>Delete Blog</button>
             </div>
             </div>
