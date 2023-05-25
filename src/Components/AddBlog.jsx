@@ -37,7 +37,7 @@ const AddBlog = (props) => {
 
   return (
     <>
-      <h1 className="flex justify-center my-3">Add a Blog</h1>
+      <h1 className="flex justify-center my-3 text-3xl font-bold">Add a Blog</h1>
      
       <div className="flex justify-center">
       <select

@@ -34,9 +34,21 @@ const OneBlog = () => {
 
 
   return (
-    <div>
-        {blog && <div>{blog.title}</div>}
-    </div>
+    
+        
+        <div className="grid place-items-start ml-20 mr-10">
+        <span className="font-semibold mt-4 underline" >Title</span> 
+        <div>
+        <h1 className="text-7xl font-bold">{blog && <div>{blog.title}</div>}</h1>
+        </div>
+
+        <div className="py-2 mt-4">
+        <span className="font-semibold my-2 underline "> Description</span>
+        <p className="text-xl text-justify	">{blog && <div> {blog.description} </div> } </p>
+        <input type="text" placeholder="Comment" className="my-4 input input-bordered w-full max-w-xs" />
+        </div>
+        </div>
+   
   )
 }
 
