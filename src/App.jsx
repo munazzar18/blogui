@@ -40,13 +40,13 @@ const showAlert = (message, type)=> {
       <NavBar/>
       <Alert alert={alert}/>
         <Routes>
-          <Route path="/" element= {<ProtectedRoute><Home showAlert={showAlert} /></ProtectedRoute>} />
+          {/* <Route path="/" element= {<ProtectedRoute><Home showAlert={showAlert} /></ProtectedRoute>} /> */}
           <Route path="/AddBlog" element= {<ProtectedRoute>< AddBlog showAlert={showAlert} /></ProtectedRoute>} />
           <Route path="/MyBlogs" element= {<ProtectedRoute><MyBlogs showAlert={showAlert} /></ProtectedRoute>} />
-          <Route path="/MyBlogs/:blogId" element= {<ProtectedRoute><OneBlog/></ProtectedRoute>} />
+          <Route path="/MyBlogs/:blogId" element= {<OneBlog/>} />
           <Route path="/login" element={<Login showAlert={showAlert} />} />
           <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
-          <Route path="/publicblog" element={<PublicBlog/>} />
+          <Route path="/" element={<PublicBlog/>} />
         </Routes>
         </CategoryState>
         </BlogState>

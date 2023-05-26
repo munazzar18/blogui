@@ -10,7 +10,7 @@ const fetchCategory = require('../middleware/fetchCategory')
 router.get ('/public' , async (req, res) => {
     try {
 
-        const blogs = await Blogs.find()
+        const blogs = await Blogs.find().populate('user', 'name').populate('category', 'content');
         res.json(blogs)
     } catch (err ){
         console.log(err.message)
@@ -118,7 +118,7 @@ router.delete('/deleteblog/:id', fetchUser, async(req, res) => {
 })
 
 //Route 5 : Fetch one blog by id 
-router.get('/:id', fetchUser, async(req, res) => {
+router.get('/:id', async(req, res) => {
     try {
         const blog = await Blogs.findById(req.params.id)
         if(!blog){

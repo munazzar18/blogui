@@ -31,7 +31,7 @@ const handleSubmit = async (e) => {
         })
     }) 
     const json = await responce.json();
-    if (json){
+    if (responce.status === 200 ){
         //save the auth token and redirect
         const authToken = json.authToken;
         setToken(authToken)
@@ -40,7 +40,7 @@ const handleSubmit = async (e) => {
         props.showAlert("Account Created Successfully" , "success");
         
     } else {
-        props.showAlert("Invalid Credentials" , "error");
+        props.showAlert(json.message , "error");
     }
    }
 

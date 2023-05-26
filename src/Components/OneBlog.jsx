@@ -3,14 +3,13 @@ import { useNavigate, useParams } from 'react-router'
 import AuthContext from '../context/AuthContext';
 
 
-const getBlog = async (blogId, token) => {
+const getBlog = async (blogId) => {
     const host = 'http://localhost:3500';
     // API CALL
     const response = await fetch(`${host}/api/blogs/${blogId}`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        'auth-token': token,
+        'Content-Type': 'application/json'
       },
     });
     const json = await response.json();
@@ -24,13 +23,8 @@ const OneBlog = () => {
     const [blog, setBlog] = useState(null);
 
     useEffect(() => {
-        if (token) {
-           getBlog(blogId, token).then(setBlog);
-        
-        } else {
-          navigate('/login');
-        }
-      }, [token]);
+           getBlog(blogId).then(setBlog)
+      }, []);
 
 
   return (
@@ -45,7 +39,9 @@ const OneBlog = () => {
         <div className="py-2 mt-4">
         <span className="font-semibold my-2 underline "> Description</span>
         <p className="text-xl text-justify	">{blog && <div> {blog.description} </div> } </p>
+        {token?
         <input type="text" placeholder="Comment" className="my-4 input input-bordered w-full max-w-xs" />
+        : <p>Please login to comment</p>}
         </div>
         </div>
    

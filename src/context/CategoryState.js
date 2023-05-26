@@ -1,6 +1,5 @@
 
-import { useContext, useState } from "react";
-import AuthContext from './AuthContext';
+import { useState } from "react";
 import CategoryContext from './CategoryContext'
 
 
@@ -11,7 +10,6 @@ import CategoryContext from './CategoryContext'
 
 
     const host = 'http://localhost:3500';    
-    const { token } = useContext(AuthContext);
   
     // Get all categories
     const getCategory = async () => {
@@ -19,9 +17,8 @@ import CategoryContext from './CategoryContext'
       const response = await fetch(`${host}/api/category/allcategories`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-          'auth-token': token,
-        },
+          'Content-Type': 'application/json'
+        }
       });
       const json = await response.json();
       setCategories(json);

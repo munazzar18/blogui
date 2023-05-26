@@ -9,6 +9,11 @@ const NavBar = () => {
     const { onLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
+
+    const handleLogin = () => {
+      navigate('/login')
+    }
+
     const  handleBlog = () => {
       if(token){
         navigate('/MyBlogs') 
@@ -33,14 +38,16 @@ const NavBar = () => {
           </a>
         </div>
         <div className="flex-none">
-        <a className="btn" onClick={HandleAddBlog}>Add Blog</a>
+          {token &&
+        <a className="btn" onClick={HandleAddBlog}>Add Blog</a>}
         </div>
         <div className="flex-none">
-        <a className="btn" onClick={handleBlog} >My Blogs</a>
+          {token &&
+        <a className="btn" onClick={handleBlog} >My Blogs</a>}
         </div>
         <div className="flex-none">
           {token?<button className="btn" onClick={onLogout}>Log Out</button>:
-          <button className="btn" onClick={onLogout}></button>
+          <button className="btn" onClick={handleLogin}>Login to Blogin</button>
           }
         </div>
        
