@@ -46,7 +46,7 @@ const Login = (props) => {
                 </label>
                 <input type="password" placeholder="password" className="input input-bordered" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <label className="label">
-                  <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
+                  <a href="/signup" className="label-text-alt link link-hover text-xl font-semibold">Create new account?</a>
                 </label>
               </div>
               <div className="form-control mt-6">

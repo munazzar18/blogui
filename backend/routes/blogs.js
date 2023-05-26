@@ -5,6 +5,23 @@ const Blogs = require('../models/Blogs')
 const {body , validationResult } = require('express-validator')
 const fetchCategory = require('../middleware/fetchCategory')
 
+
+//Route 6 : Fetch Public blogs 
+router.get ('/public' , async (req, res) => {
+    try {
+
+        const blogs = await Blogs.find()
+        res.json(blogs)
+    } catch (err ){
+        console.log(err.message)
+        res.status(500).send("Internal Server Error");
+    }
+})
+
+
+
+
+
 //Route 1: Get all the Blogs using: GET "/api/fetchallblogs" Loging Required
 router.get ('/fetchallblogs', fetchUser ,async (req, res) => {
     try {
@@ -113,5 +130,7 @@ router.get('/:id', fetchUser, async(req, res) => {
         res.status(500).send('Internal Server Fail')
     }
 })
+
+
 
 module.exports = router;

@@ -17,6 +17,8 @@ import 'tailwindcss/tailwind.css';
 import 'daisyui/dist/full.css';
 import CategoryState from "./context/CategoryState"
 import OneBlog from "./Components/OneBlog";
+import SignUp from "./Components/SignUp";
+import PublicBlog from "./Components/PublicBlog";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -43,6 +45,8 @@ const showAlert = (message, type)=> {
           <Route path="/MyBlogs" element= {<ProtectedRoute><MyBlogs showAlert={showAlert} /></ProtectedRoute>} />
           <Route path="/MyBlogs/:blogId" element= {<ProtectedRoute><OneBlog/></ProtectedRoute>} />
           <Route path="/login" element={<Login showAlert={showAlert} />} />
+          <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
+          <Route path="/publicblog" element={<PublicBlog/>} />
         </Routes>
         </CategoryState>
         </BlogState>
