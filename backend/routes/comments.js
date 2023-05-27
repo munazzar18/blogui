@@ -6,10 +6,9 @@ const {body , validationResult } = require('express-validator')
 const Blogs = require('../models/Blogs')
 
 //Route 1 : Get all Comments 
-router.get('/', fetchUser, async(req, res) => {
+router.get('/', async(req, res) => {
     try {
         const comments = await Comments.find({
-            user : req.user.id,
             blogId : req.params.blogId
         })
         res.json(comments)

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import AuthContext from '../context/AuthContext';
+import Comments from './Comments';
 
 
 const getBlog = async (blogId) => {
@@ -42,6 +43,7 @@ const OneBlog = () => {
         <input type="text" placeholder="Comment" className="my-4 input input-bordered w-full max-w-xs" />
         : <p>Please login to comment</p>}
         </div>
+        <p className='py-3'> <Comments/> </p>
         </div>
    
   )
