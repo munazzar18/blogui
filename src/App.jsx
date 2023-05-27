@@ -4,7 +4,7 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import AuthProvider from "./Components/AuthProvider";
-import Home from "./Components/Home";
+// import Home from "./Components/Home";
 import Login from "./Components/Login";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import NavBar from "./Components/NavBar";
@@ -19,6 +19,7 @@ import CategoryState from "./context/CategoryState"
 import OneBlog from "./Components/OneBlog";
 import SignUp from "./Components/SignUp";
 import PublicBlog from "./Components/PublicBlog";
+import Comments from "./Components/Comments";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -44,6 +45,7 @@ const showAlert = (message, type)=> {
           <Route path="/AddBlog" element= {<ProtectedRoute>< AddBlog showAlert={showAlert} /></ProtectedRoute>} />
           <Route path="/MyBlogs" element= {<ProtectedRoute><MyBlogs showAlert={showAlert} /></ProtectedRoute>} />
           <Route path="/MyBlogs/:blogId" element= {<OneBlog/>} />
+          <Route path="/MyBlogs/:blogId/comments" element= {<Comments/>} />
           <Route path="/login" element={<Login showAlert={showAlert} />} />
           <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
           <Route path="/" element={<PublicBlog/>} />

@@ -11,7 +11,7 @@ const PublicBlog = () => {
         const host = 'http://localhost:3500';
         const { categories, getCategory } = useContext(CategoryContext);
 
-        console.log({selectedCategory})
+      
         
         // Get all Blogs publically
         const getBlogs = async () => {
@@ -24,7 +24,7 @@ const PublicBlog = () => {
           });
           const json = await response.json();
           setBlogs(json);
-          console.log(json)
+          
           
         }
 
@@ -50,7 +50,6 @@ const PublicBlog = () => {
         return true
       }
     })
-    console.log({filteredBlogs})
 
   return (
     <div>
@@ -87,7 +86,7 @@ const PublicBlog = () => {
   </select>
         </div>
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {filteredBlogs.map((blog, idx) => (
+          {filteredBlogs.map((blog) => (
             <article key={blog._id} blog={blog} className="flex max-w-xl flex-col items-start justify-between">
             {/* <BlogItem  key={blog.id} blog={blog} updateBlog={updateBlog} showAlert={props.showAlert} /> */}
               <div className="flex items-center gap-x-4 text-xs">

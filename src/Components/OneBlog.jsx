@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import AuthContext from '../context/AuthContext';
 
 
@@ -19,7 +19,6 @@ const getBlog = async (blogId) => {
 const OneBlog = () => {
     const {blogId} = useParams();
     const { token } = useContext(AuthContext);
-    const navigate = useNavigate();
     const [blog, setBlog] = useState(null);
 
     useEffect(() => {
