@@ -79,7 +79,7 @@ router.delete('/:blogId/comments/:id', fetchUser, async(req, res) => {
         if(comment.user.toString() !== req.user.id){
             return res.status(401).send("Not Permitted")
         } 
-        if(!Blogs.blogId.toString() !== Blogs.blogId){
+        if(comment.blogId.toString() !== req.params.blogId){
             return res.status(401).send("Not allowed in this blog")
         }
         comment = await Comments.findByIdAndDelete(req.params.id)

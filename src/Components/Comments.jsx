@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 
 
-const Comments = () => {
+const Comments = ({refetch}) => {
     const { token } = useContext(AuthContext);
     let {blogId} = useParams();
     const [comments, setComments] = useState([]);
@@ -44,7 +44,7 @@ const Comments = () => {
 
     useEffect(() => {
         getComments(blogId).then(setComments)
-   }, [blogId]);
+   }, [blogId, refetch]);
 
 
   return (

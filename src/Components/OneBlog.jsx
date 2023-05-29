@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import AuthContext from '../context/AuthContext';
 import Comments from './Comments';
 
@@ -23,6 +23,8 @@ const OneBlog = () => {
     const [blog, setBlog] = useState(null);
     const initialComment = { content: '' };
     let [comment , setComment] = useState(initialComment);
+    let [refetch, setRefetch]  = useState(false);
+    const navigate = useNavigate();
 
     const host = 'http://localhost:3500';
     const createComment = async ( content, blogId) => {
@@ -41,9 +43,11 @@ const OneBlog = () => {
            setComment(newComment);
         };  
 
-        const handleClick = (e) => {
+        const handleClick = async (e) => {
           e.preventDefault();
-          createComment(comment.content, blogId);
+          await createComment(comment.content, blogId);
+          setComment({content: ''});
+          setRefetch(!refetch);
         };
 
       const onChange = (e) => {
@@ -79,7 +83,7 @@ const OneBlog = () => {
         </div>
         </div>
        
-        <Comments blogId={blogId}  Comments={comment} /> 
+        <Comments refetch={refetch} blogId={blogId}  Comments={comment} /> 
         </div>
    
   )
