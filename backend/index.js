@@ -14,7 +14,7 @@ app.use('/api/blogs/public' , require('./routes/blogs'))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/category', require('./routes/category'))
 app.use('/api/blogs', require('./routes/blogs'))
-app.use('/api/blogs/:blogId/comments', require('./routes/comments'))
+app.use('/api/blogs', require('./routes/comments'))
 
 
 
