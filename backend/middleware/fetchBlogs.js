@@ -1,8 +1,4 @@
 const Blogs = require('../models/Blogs');
-const express = require('express');
-const router = express.Router();
-
-
 
 const fetchBlogs = async (req, res, next) => {
   try {

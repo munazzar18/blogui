@@ -1,8 +1,16 @@
 const mongoose = require ('mongoose')
-const mongoURI = 'mongodb://127.0.0.1:27017';
+require('dotenv').config()
 
- connectToMongo = async () => {
-    await mongoose.connect(mongoURI)
+const mongoURI = process.env.BLOG_DB_URL_ROUTE;
+
+ const connectToMongo = async () => {
+    try {
+        const conn = await mongoose.connect(mongoURI)
+        console.log(`Connected to MongoDB Atlas host : ${conn.connection.host}`)
+
+    } catch (error) {
+        console.log(error.message)
+    }
 }
 
 console.log("Connected to MongoDB!!!")
