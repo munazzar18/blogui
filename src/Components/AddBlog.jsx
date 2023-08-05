@@ -82,6 +82,7 @@ const AddBlog = (props) => {
           minLength={5}
           placeholder="Description"
           className="textarea textarea-bordered textarea-lg w-full max-w-xs textarea-primary"
+          style={{ height: 'auto' }}
         ></textarea>
       </div>
       <div className="flex justify-center">
