@@ -74,17 +74,16 @@ const AddBlog = (props) => {
         <label className="label">
           <span className="label-text">Description</span>
         </label>
-        <span
+        <textarea
           onChange={onChange}
           id="description"
           value={blog.description}
           name="description"
           minLength={5}
           placeholder="Description"
-          className="input input-bordered input-lg w-full max-w-xs input-primary"
-          role='textbox'
-          contenteditable
-        ></span>
+          className="textarea textarea-bordered textarea-lg w-full max-w-xs textarea-primary"
+          style={{ height: 'auto' }}
+        ></textarea>
       </div>
       <div className="flex justify-center">
         <button
