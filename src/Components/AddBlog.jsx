@@ -81,7 +81,7 @@ const AddBlog = (props) => {
           name="description"
           minLength={5}
           placeholder="Description"
-          className="input textarea-bordered textarea-lg w-full max-w-xs textarea-primary"
+          className="input input-bordered input-lg w-full max-w-xs input-primary"
           role='textbox'
           contenteditable
           style={{ height: 'auto' }}
