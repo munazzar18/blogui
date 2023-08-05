@@ -1,5 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react'
 import CategoryContext from '../context/CategoryContext';
+import { RotatingLines } from 'react-loader-spinner';
+
+
+
 
 
 
@@ -11,21 +15,27 @@ const PublicBlog = () => {
         const host = 'https://blogui-server.vercel.app';
         const { categories, getCategory } = useContext(CategoryContext);
 
+        const [loading, setLoading] = useState(true);
+
       
         
         // Get all Blogs publically
         const getBlogs = async () => {
-          // API CALL
-          const response = await fetch(`${host}/api/blogs/public`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-          });
-          const json = await response.json();
-          setBlogs(json);
-          
-          
+        try {
+             // API CALL
+             const response = await fetch(`${host}/api/blogs/public`, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            });
+            const json = await response.json();
+            setBlogs(json);
+            setLoading(false)
+        } catch (error) {
+          console.error('Error fetching blogs:', error);
+          setLoading(false);
+        }   
         }
 
         useEffect(() => { 
@@ -53,14 +63,8 @@ const PublicBlog = () => {
 
   return (
     <div>
-
 <div className="flex justify-center">
-   
-</div>
-
-
-
-
+   </div>
       <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
@@ -85,6 +89,13 @@ const PublicBlog = () => {
     ))}
   </select>
         </div>
+        <div>
+        {loading ? ( // Conditionally render RotatingLines while data is being fetched
+        <div className='flex justify-center my-60' > 
+        <RotatingLines/>
+        </div>
+           ) : (
+      
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {filteredBlogs.map((blog) => (
             <article key={blog._id} blog={blog} className="flex max-w-xl flex-col items-start justify-between">
@@ -118,6 +129,8 @@ const PublicBlog = () => {
               </article>
               
           ))}
+        </div>
+           )}
         </div>
       </div>
     </div>
