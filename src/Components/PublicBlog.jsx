@@ -8,7 +8,7 @@ const PublicBlog = () => {
         const [selectedCategory, setSelectedCategory] = useState('');
         const blogInitial = [];
         const [blogs , setBlogs] = useState(blogInitial)
-        const host = 'http://localhost:3500';
+        const host = 'https://blogui-server.vercel.app';
         const { categories, getCategory } = useContext(CategoryContext);
 
       

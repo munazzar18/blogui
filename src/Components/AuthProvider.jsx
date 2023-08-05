@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import useLocalStorage from '../hooks/useLocalStorage';
 
-const host = 'http://localhost:3500';
+const host = 'https://blogui-server.vercel.app';
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useLocalStorage('token', null);

@@ -9,7 +9,7 @@ import CategoryContext from './CategoryContext'
     const [categories, setCategories] = useState(CategoryInitial);
 
 
-    const host = 'http://localhost:3500';    
+    const host = 'https://blogui-server.vercel.app';    
   
     // Get all categories
     const getCategory = async () => {

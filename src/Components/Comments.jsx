@@ -7,7 +7,7 @@ const Comments = ({refetch}) => {
     const { token } = useContext(AuthContext);
     let {blogId} = useParams();
     const [comments, setComments] = useState([]);
-    const host = 'http://localhost:3500';
+    const host = 'https://blogui-server.vercel.app';
 
     const getComments = async (blogId) => {
       try {

@@ -5,7 +5,7 @@ import Comments from './Comments';
 
 
 const getBlog = async (blogId) => {
-    const host = 'http://localhost:3500';
+    const host = 'https://blogui-server.vercel.app';
     // API CALL
     const response = await fetch(`${host}/api/blogs/${blogId}`, {
       method: 'GET',
@@ -26,7 +26,7 @@ const OneBlog = () => {
     let [refetch, setRefetch]  = useState(false);
     const navigate = useNavigate();
 
-    const host = 'http://localhost:3500';
+    const host = 'https://blogui-server.vercel.app';
     const createComment = async ( content, blogId) => {
       //api call
       const response = await fetch(`${host}/api/blogs/${blogId}/comments`, {

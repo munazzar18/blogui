@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import AuthContext from '../context/AuthContext';
 
   const BlogState = (props) => {
-    const host = 'http://localhost:3500';
+    const host = 'https://blogui-server.vercel.app';
     const blogsInitial = [];
     const [blogs, setBlogs] = useState(blogsInitial);
     const { token } = useContext(AuthContext);

@@ -7,7 +7,13 @@ connectToMongo()
 const app = express()
 const port = 3500
 
-app.use(cors())
+app.use(cors(
+  {
+    origin: ["https://blogui-ten.vercel.app"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true
+  }
+))
 app.use(express.json())
 
 app.use('/api/blogs/public' , require('./routes/blogs'))

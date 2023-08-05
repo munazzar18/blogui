@@ -6,7 +6,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 const SignUp = (props) => {
 const [token, setToken] = useLocalStorage('token', null);
-const host = "http://localhost:3500"
+const host = "https://blogui-server.vercel.app"
 
 const [credential , setCredential] = useState({
     name:"",
