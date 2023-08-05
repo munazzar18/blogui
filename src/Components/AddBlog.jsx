@@ -83,7 +83,7 @@ const AddBlog = (props) => {
           placeholder="Description"
           className="input input-bordered input-lg w-full max-w-xs input-primary"
           role='textbox'
-          contentEditable
+          contenteditable
         ></span>
       </div>
       <div className="flex justify-center">
